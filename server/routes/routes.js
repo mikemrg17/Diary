@@ -1,12 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Reminder = require('../models/reminder');
 
 //GET - Find users
 router.get('/', async (req, res)=>{
     const users = await User.find();
     console.log(users);;
     res.json(users);
+});
+
+router.get('/getReminders', async (req,res)=>{
+    const reminders = await Reminder.find();
+    console.log(reminders);
+    res.json(reminders);
 });
 
 //POST - Insert user
