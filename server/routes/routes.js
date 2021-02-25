@@ -25,6 +25,14 @@ router.post('/addUser', async(req, res)=>{
     });
 });
 
+router.post('/addReminder', async(req, res)=>{
+    const newReminder = new Reminder(req.body);
+    await newReminder.save();
+    res.json({
+        status: "New reminder added"
+    });
+});
+
 //PUT - Update user
 router.put('/updateUser/:id', async(req, res)=>{
     await User.findByIdAndUpdate(req.params.id, req.body);
